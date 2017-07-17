@@ -6,7 +6,6 @@
 //Also need to code for a computer player - would you happen to know of any good examples on the internet?
 //you help is very much appreciated!!!
 
-
 /** COMP 1006/1406
   * Summer 2017
   *
@@ -149,11 +148,9 @@ public class TicTacToeGame{
 
     /* allocate memory for the board array */
     board = new Character[rows][columns];
-    //KW code: scanner = new Scanner (System.in);
 
     // add code to initialize all elements to empty
     //EmptyBoard();
-
 
     /* code to drive the game */
 
@@ -163,10 +160,8 @@ public class TicTacToeGame{
         board[i][j] = '_' ;
       }
     }
-
-    PrintBoard();
+    printBoard();
     Play();
-
   }
 
 
@@ -176,7 +171,12 @@ public class TicTacToeGame{
   public static void Play()
   {
     System.out.println("Welcome to tic-tac-toe++! Please enter a row and a column: ");
-    Integer ticker = 0;
+    Integer tickerFullBoard = 0;
+    Integer tickerTotalGames = 0;
+    Integer tickerPlayer1Wins = 0;
+    Integer tickerPlayer2Wins = 0;
+    Integer tickerDrawGames = 0;
+    Integer tickerBestWin = 0;
     boolean playing = true;
     while (playing)
     {
@@ -195,7 +195,7 @@ public class TicTacToeGame{
       else if (board[row][col] == '_')
       {
         board[row][col] = turn;
-        ticker++;
+        tickerFullBoard++;
         System.out.println(" ");
         System.out.println(turn + " was placed at row " + row + " and column "+ col);
 
@@ -216,10 +216,18 @@ public class TicTacToeGame{
             matchV++;
         }
 
-        PrintBoard();
+        printBoard();
 
-        if (matchH == win_condition || matchV == win_condition)
+        if (matchH >= win_condition || matchV >= win_condition)
         {
+          if (tickerBestWin < matchH)
+          {
+            tickerBestWin = matchH;
+            if (tickerBestWin < matchV)
+            {
+              tickerBestWin = matchV;
+            }
+          }
           System.out.print("Game Over! " + turn + " wins!");
           //EmptyBoard();
 
@@ -233,8 +241,9 @@ public class TicTacToeGame{
             turn = 'O';
           else
             turn = 'X';
-          if (ticker == rows*columns)
+          if (tickerFullBoard == rows*columns)
           {
+            tickerDrawGames++;
             System.out.println("GameOver! Tie Game!");
 
 //fix this
@@ -261,7 +270,7 @@ public class TicTacToeGame{
     }
   }
 
-  public static void PrintBoard(){
+  public static void printBoard(){
     for (int i=0; i<rows; i++){
       System.out.println();
       for (int j=0; j<columns; j++){
@@ -273,8 +282,12 @@ public class TicTacToeGame{
     System.out.println();
   }
 
- 
- 
+/** KW code from simple video
+  public static boolean GameOver (int rMove, int cMove){
+    if (board [0][cMove] == )
+    return false;
+  }
+*/
 
   public static void printScore(){
 
@@ -286,7 +299,8 @@ public class TicTacToeGame{
   {
     System.out.println("Play again (Y/N)? ");
     char c = scan.next().charAt(0);
-    if (c == 'Y')
+    playing = answer.equalsIgnoreCase("y");
+    tickerTotalGames ++;
     {
       EmptyBoard();
       Play();
