@@ -282,12 +282,7 @@ public class TicTacToeGame{
     System.out.println();
   }
 
-/** KW code from simple video
-  public static boolean GameOver (int rMove, int cMove){
-    if (board [0][cMove] == )
-    return false;
-  }
-*/
+
 
   public static void printScore(){
 
