@@ -1,3 +1,12 @@
+//Hi Dave, some comments - parts of this was created as a shell. I filled in the code for methods etc. 
+//The Play method starting at line 171 needs to be split into more methods
+//However, I can't seem to be able to do it without loosing the value of 'col' and 'row' inputs by the user
+//Also having trouble placing the playAgain piece method
+//And having trouble placing a counter for the total number of games, number of Player 1 wins, Player 2 wins, draws and best wins (nubers in a row)
+//Also need to code for a computer player - would you happen to know of any good examples on the internet?
+//you help is very much appreciated!!!
+
+
 /** COMP 1006/1406
   * Summer 2017
   *
@@ -264,12 +273,8 @@ public class TicTacToeGame{
     System.out.println();
   }
 
-/** KW code from simple video
-  public static boolean GameOver (int rMove, int cMove){
-    if (board [0][cMove] == )
-    return false;
-  }
-*/
+ 
+ 
 
   public static void printScore(){
 
